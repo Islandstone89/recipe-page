@@ -1,0 +1,271 @@
+
+/* CSS RESET */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* Avoid orphans on paragraphs */
+p {
+    text-wrap: pretty;
+}
+
+/* Make links inherit colors */
+a {
+  color: inherit;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+
+/* CUSTOM PROPERTIES */
+
+:root {
+/* COLORS */
+
+/* Primary */
+--clr-nutmeg: hsl(14, 45%, 36%);
+--clr-dark-raspberry: hsl(332, 51%, 32%);
+--clr-light-brown: 	hsl(29, 53%, 90%);
+
+/* Neutral */
+--clr-white: hsl(0, 0%, 100%);
+--clr-rose-white: hsl(322, 100%, 98%);
+--clr-eggshell: hsl(30, 54%, 90%);
+--clr-light-grey: hsl(30, 18%, 87%);
+--clr-wenge-brown: hsl(30, 10%, 34%);
+--clr-dark-charcoal: hsl(24, 5%, 18%);
+
+/* TYPOGRAPHY */
+
+--ff-outfit: 'Outfit', sans-serif;
+--ff-young-serif: 'Young Serif', serif;
+--fw-600: 600;
+--fw-700: 700;
+
+}
+
+/* UTILITIES */
+
+.flow > * + * {
+    --flow-space: 3rem;
+    margin-top: var(--flow-space);
+}
+
+/* COMPONENTS */
+
+.section__heading {
+    color: var(--clr-nutmeg);
+    font-family: var(--ff-young-serif);
+    margin-block-end: 1.5rem;
+}
+
+.preparation__list__item::marker {
+    color: var(--clr-dark-raspberry);
+}
+
+.ingredients__list__item::marker,
+.instructions__list__item::marker {
+    font-weight: var(--fw-700);
+    color: var(--clr-nutmeg);
+}
+
+
+/* GENERAL STYLING */
+
+body {
+    background-color: var(--clr-light-brown);
+    color: var(--clr-wenge-brown);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100svh;
+    font-family: var(--ff-outfit);
+    line-height: 1.5;
+}
+
+.main {
+    max-width: 40rem;
+}
+
+.recipe-card {
+    display: grid;
+    grid-template-columns: 1fr min(60ch, calc(100% - 64px)) 1fr;
+    grid-column-gap: 32px;
+    background-color: var(--clr-white);
+}
+
+.image-wrapper {
+    grid-column: 1 / 4;
+}
+
+@media(min-width: 50rem) {
+    .recipe-card {
+        border-radius: 16px;
+        padding-top: 26px;
+        margin-block: 4rem;
+    }
+    .image-wrapper {
+        grid-column: 2 / 3;
+
+        .recipe-image {
+            border-radius: 16px;
+        }
+    }
+}
+
+.content {
+    padding-block: 2rem;
+    grid-column: 2 / 3;
+}
+
+.main-heading {
+    color: var(--clr-dark-charcoal);
+    font-family: var(--ff-young-serif);
+    margin-block-end: 1.5rem;
+}
+
+/* PREPARATION */
+
+.preparation {
+    background-color: var(--clr-rose-white);
+    padding: 2rem;
+}
+
+.aside__heading {
+    color: var(--clr-dark-raspberry);
+    margin-block-end: 1rem;
+}
+
+.preparation__list {
+    padding-inline-start: 2em;
+}
+
+.preparation__list__item {
+    --flow-space: 1em;
+}
+
+.preparation__list__item__title {
+    font-weight: var(--fw-700);
+    color: var(--clr-wenge-brown);
+}
+
+/* INGREDIENTS */
+
+.ingredients {
+    border-bottom: 1px solid var(--clr-light-grey);
+    padding-block-end: 2rem;
+}
+
+.ingredients__list {
+    padding-inline-start: 2em;
+}
+
+.ingredients__list__item {
+    --flow-space: .6em;
+}
+
+/* INSTRUCTIONS */
+
+.instructions {
+    border-bottom: 1px solid var(--clr-light-grey);
+    padding-block-end: 2rem;
+}
+
+.instructions__list {
+    padding-inline-start: 2em;
+}
+
+.instructions__list__item__title {
+    color: var(--clr-wenge-brown);
+    font-weight: var(--fw-700);
+}
+
+.instructions__list__item {
+    --flow-space: 1em;
+}
+
+/* NUTRITION */
+
+.nutrition__paragraph {
+    margin-block-end: 1rem;
+}
+
+.nutrition__table {
+    display: block;
+}
+
+.nutrition__table__body {
+    display: block;
+}
+
+.nutrition__table__row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    border-bottom: 1px solid var(--clr-light-grey);
+    padding-inline-start: 1.5rem;
+    padding-block: .5rem;
+}
+
+.nutrition__table__row__value {
+    color: var(--clr-nutmeg);
+    font-weight: var(--fw-700);
+}
